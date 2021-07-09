@@ -310,17 +310,15 @@ module.exports.map = map;
  * as a arguement. If that property is in the nested object then function
  * returns an array of the matching property from the object array.
  * 
- * @param {Array} arr: An array of objects
- * @param {Property} prop: The property from each object in the array that
+ * @param {Array} array: An array of objects
+ * @param {Property} property: The property from each object in the array that
  * will be pushed into a new return array.
  * 
  * @return {Array}: An array composed of the values that match the property 
  * arguement from the nested objects in the array.
  */
-function pluck(arr, prop){                   
-    return map(arr, function(obj){               
-        return obj[prop];                       
-    });
+function pluck(array, property){                   
+    return map(array, object => object[property]);
 }
 module.exports.pluck = pluck;
 
