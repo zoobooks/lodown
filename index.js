@@ -283,25 +283,19 @@ module.exports.partition = partition;
  * end of the iteration over the collection.
  * 
  * @param {Array or Object} collection: The collection over which to iterate.
- * @param {Function} action: The Function to be applied to each value in the 
+ * @param {Function} func: The Function to be applied to each value in the 
  * collection
  * 
  * @return {Array}: An array composed of the values from the collection
  * now "mapped," from the arguement action function.
  */
-function map(collection, action){                
-    let mapped = [];                            
-    if(typeOf(collection)==='array'){           
-        each(collection, function(e,i,a){         
-            mapped.push(action(e,i,a));              
-        });
-    }
-    if(typeOf(collection)==='object'){           
-        each(collection, function(key,value,obj){
-            mapped.push(action(key,value,obj));      
-        });
-    }
-    return mapped;                                 
+function map(collection, func){                       
+    let result = [];                                       
+    each(collection, function(value, index, collection){ 
+        let mapped = func(value, index, collection);        
+        result.push(mapped);                                
+    });
+    return result;                                         
 }
 module.exports.map = map;
 
